@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="glMatrix-0.9.5.min.js"></script>
+<script type="text/javascript" src="webgl.js"></script>  
+
+
+<script id="shader-fs" type="x-shader/x-fragment">
+</script>
+
+<script id="shader-vs" type="x-shader/x-vertex">
+  attribute vec3 aVertexPosition;
+
+  uniform mat4 ModelViewProjectionMatrix;
+  varying vec3 vPos;
+
+  void main(void) {
+    gl_Position = ModelViewProjectionMatrix * vec4(aVertexPosition, 1.0);
+    vPos = aVertexPosition;
+  }
+</script>
+
+<script type="text/javascript">
+  jQuery(function () {
+    webGLStart();
+  });
+</script>
+</head>
+
+
+
+<body onload="this.onkeypress = keyHandler">
+
+<p>Keys: <strong>W A S D + - < ></strong></p>
+
+<canvas id="canvas" width="800" height="800"></canvas>
+
+</body>
+</html>
